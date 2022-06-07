@@ -70,3 +70,13 @@ class Lista:
 
             aux=aux.siguiente
         print("No encontro el valor")
+
+    def borrarTodo(self):
+        aux=self.primero
+        while(aux!=None):
+            print("Se borro el valor ",aux.valor)
+            auxborrar=aux
+            del auxborrar
+            aux=aux.siguiente
+        self.primero=None
+        self.ultimo=None
