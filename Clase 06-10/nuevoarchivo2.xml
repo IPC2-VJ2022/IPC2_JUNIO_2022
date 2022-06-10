@@ -1,0 +1,14 @@
+<empresa>
+    <departamento departamento="Contabilidad">
+        <empleado id="1">
+            <nombre>Jos&#233; Ernesto</nombre>
+            <salario>4000.00</salario>
+        </empleado>
+        <empleado id="2">
+            <nombre>Daniel P&#233;rez</nombre>
+            <salario>2000.00</salario>
+        </empleado>
+    </departamento>
+    <departamento departamento="RRHH">
+        </departamento>
+</empresa>

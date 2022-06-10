@@ -1,0 +1,18 @@
+<empresa>
+    <departamento departamento="Contabilidad">
+        <empleado id="1">
+            <nombre>nuevo Nombre</nombre>
+            <salario>4000.00</salario>
+        </empleado>
+        <empleado id="2">
+            <nombre>nuevo Nombre</nombre>
+            <salario>2000.00</salario>
+        </empleado>
+    </departamento>
+    <departamento departamento="RRHH">
+        <empleado id="3">
+            <nombre>nuevo Nombre</nombre>
+            <salario>3000.00</salario>
+        </empleado>
+    </departamento>
+</empresa>
