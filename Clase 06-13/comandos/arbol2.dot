@@ -1,0 +1,30 @@
+digraph G {
+  node [shape=box];
+  
+  nodo0[label="empresa"]
+  nodoRRHH[label="departamento = RRHH"]
+  nodoC[label="departamento= conta"]
+  nodoa[label="empleado"]
+  nodoa1[label="nombre: juan"]
+  nodoa2[label="puesto: contador"]
+  nodoa3[label="salario: 2000"]
+  
+  
+  nodob[label="empleado"]
+  nodob1[label="nombre: luis"]
+  nodob2[label="puesto: gerente"]
+  nodob3[label="salario: 5000"]
+  
+  nodo0 -> nodoRRHH
+  nodo0 -> nodoC
+  
+  nodoC -> nodoa
+  nodoa -> nodoa1
+  nodoa -> nodoa2
+  nodoa -> nodoa3
+  
+  nodoC -> nodob
+  nodob ->nodob1
+  nodob ->nodob2
+  nodob ->nodob3
+}
