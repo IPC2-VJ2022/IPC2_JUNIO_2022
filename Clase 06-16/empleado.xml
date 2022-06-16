@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding = "utf-8" ?>
 <empresa>
     <departamento departamento="Contabilidad" ubicacion="segundo piso">
         <empleado id="1">
-            <nombre>Jos&#233; Ernesto</nombre>
+            <nombre>José Ernesto</nombre>
             <salario>
                 <neto>4000</neto>
                 <bono>500</bono>
             </salario>
         </empleado>
         <empleado id="2">
-            <nombre>Daniel P&#233;rez</nombre>
+            <nombre>Daniel Pérez</nombre>
             <salario>
                 <neto>4000</neto>
                 <bono>500</bono>
@@ -17,7 +18,7 @@
     </departamento>
     <departamento departamento="RRHH" ubicacion="primer piso">
         <empleado id="3">
-            <nombre>Nuevo nombre</nombre>
+            <nombre>Marta Torres"</nombre>
             <salario>
                 <neto>4000</neto>
                 <bono>500</bono>

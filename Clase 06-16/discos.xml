@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding = "utf-8" ?>
+<catalog>
+    <cd>
+        <title>empire burlesque</title>
+        <artist>bob dylan</artist>
+        <year>1985</year>
+    </cd>
+    <cd>
+        <title>greatest hits</title>
+        <artist>dolly parton</artist>
+        <year>1982</year>
+    </cd>
+    <cd>
+        <!-- titulo entre comillas dobles para validar el funcionamiento del codificado -->
+        <title>&quot;empire burlesque&quot;</title>
+        <artist>bee gees</artist>
+        <year>1998</year>
+    </cd>
+</catalog>
