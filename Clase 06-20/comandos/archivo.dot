@@ -9,7 +9,7 @@ nodoEmpl1name[label="Nombre: José Ernesto "]
 nodoEmpl1->nodoEmpl1name
 nodoEmpl2[label="Empleado: 2 "] 
 nodoDeptoContabilidad->nodoEmpl2
-nodoEmpl2name[label="Nombre: nuevoNombre_ "] 
+nodoEmpl2name[label="Nombre: actualizado "] 
 nodoEmpl2->nodoEmpl2name
 nodoDeptoRRHH[label="RRHH"] 
 nodoRaiz ->nodoDeptoRRHH

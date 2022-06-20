@@ -6,7 +6,7 @@
             <salario>4000.00</salario>
         </empleado>
         <empleado id="2">
-            <nombre>nuevoNombre_</nombre>
+            <nombre>actualizado</nombre>
             <salario>3000</salario>
         </empleado>
     </departamento>

@@ -29,43 +29,67 @@ def ruta1():
     objJson=json.loads(cadena)
     return objJson
 
-#Definimos una ruta GET
-@app.route('/cargar')
-def carga():
+#Definimos una ruta GET mostrar empleados
+@app.route('/empleados')
+def empleados():
+    #Cargamos la info
     arbol=ET.parse('empleados.xml')
     #Obtenemos la raiz getroot con minuscula
     raiz=arbol.getroot()
+
+    #cadena de txt en donde guardamos la info en formato JSON
     cadena=escribirJSONempleado(raiz)
+
+    #convertir la cadena de txt a JSON
     objJson=json.loads(cadena)
     return objJson
 
+#metodo para exribir la cadena de txt en formato JSON
 def escribirJSONempleado(raiz_):
     cadena=""
     cadena+="{"+"\n"
     cadena+="\"empresa\":{"+"\n"
     cadena+="\"departamento\":["+"\n"
 
+    #buscamos la cantidad de departamentos existentes
     cantDepartamentos=len(raiz_.findall('./departamento'))
     contadorDep=0
+
+    #recorrer los departamentos para escribirlos en la cadena
     for departamento in raiz_:
         contadorDep+=1
+        
+        
         cadena+="{"+"\n"
         nombreDepartamento=departamento.attrib['departamento']
+
         cadena+="\"departamento\":"+"\""+nombreDepartamento+"\","+"\n"
         cadena+="\"empleado\":["+"\n"
 
         cantEmpleados=len(departamento.findall('./empleado'))
         contadorEmpleados=0
+
+        #recorremos cada empleado del departamento y lo escribimos
         for empleado in departamento:
             contadorEmpleados+=1
+            
+            
             cadena+="{"+"\n"
             idEmpleado=empleado.attrib['id']
-            cadena+="\"id\":"+"\""+idEmpleado+"\""+"\n"
+            nombreEmpleado=empleado.findall('nombre')[0].text
+            cadena+="\"id\":"+"\""+idEmpleado+"\""+",\n"
+            cadena+="\"nombre\":"+"\""+nombreEmpleado+"\""+"\n"
+            
+            #cerrar el objeto Empleado
             cadena+="}"+"\n"
             #Si no es el ultimo elemento, agregar una ,
             if(contadorEmpleados<cantEmpleados):
                 cadena+=","+"\n"
+
+        #Cerramos el listado de empleados del departamento
         cadena+="]"+"\n"
+
+        #Cerramos el objeto departamento
         cadena+="}"+"\n"
 
         #Si no es el ultimo elemento, agregar una ,
@@ -83,12 +107,12 @@ def escribirJSONempleado(raiz_):
     return cadena
 
 #Definimos una ruta GET
-@app.route('/reporte')
+@app.route('/reporteEmpleados')
 def reporte1():
+    #cargamos los datos
     arbol=ET.parse('empleados.xml')
     #Obtenemos la raiz getroot con minuscula
     raiz=arbol.getroot()
-    modificarEmpleado(arbol,raiz,2,'nuevoNombre_')
     Graficar1(raiz)
     return 'listo'
 
@@ -160,7 +184,26 @@ def Graficar1(raiz_):
     comandoDot = "dot -Tjpg comandos/archivo.dot -o reportes/reporte2.jpg"
     os.system(comandoDot)
 
-def modificarEmpleado(arbol_,raiz_,idBuscado,nuevoNombre_):
+#peticion POST modificar empleado
+@app.route('/modificarEmpleado',methods=["POST"])
+def modificarEmp():
+    #leer los datos del json
+    jsonres=request.get_json()
+
+    #Guardar en variables los campos del JSON
+    id_=int(jsonres["id"])
+    nombre_=jsonres["nombre"]
+
+    #Leemos el XML
+    arbol=ET.parse('empleados.xml')
+    #Obtenemos la raiz getroot con minuscula
+
+    #modificamos el empleado
+    modificarEmpleado(arbol,id_,nombre_)
+    return 'listo'
+
+def modificarEmpleado(arbol_,idBuscado,nuevoNombre_):
+    raiz_=arbol_.getroot()
     for departamento in raiz_:
         # print('Departamento: ',departamento.attrib['departamento'],'; Ubicacion:',departamento.attrib['ubicacion'])
         for empleado in departamento:
@@ -168,7 +211,6 @@ def modificarEmpleado(arbol_,raiz_,idBuscado,nuevoNombre_):
             if(idActual==idBuscado):
                 #encontramos el empleado que estabamos buscando
                 empleado.findall('nombre')[0].text=nuevoNombre_
-                #sobre escribimos el archivo
                 arbol_.write('empleados.xml',xml_declaration=True,encoding="utf-8")
                 return #Despues de actualizar el dato, nos salimos del metodo
     print('No se encontro el id')
