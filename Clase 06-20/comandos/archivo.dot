@@ -1,0 +1,20 @@
+digraph G { 
+node[shape=elipse] 
+nodoRaiz[label="Empresa"] 
+nodoDeptoContabilidad[label="Contabilidad"] 
+nodoRaiz ->nodoDeptoContabilidad
+nodoEmpl1[label="Empleado: 1 "] 
+nodoDeptoContabilidad->nodoEmpl1
+nodoEmpl1name[label="Nombre: José Ernesto "] 
+nodoEmpl1->nodoEmpl1name
+nodoEmpl2[label="Empleado: 2 "] 
+nodoDeptoContabilidad->nodoEmpl2
+nodoEmpl2name[label="Nombre: nuevoNombre_ "] 
+nodoEmpl2->nodoEmpl2name
+nodoDeptoRRHH[label="RRHH"] 
+nodoRaiz ->nodoDeptoRRHH
+nodoEmpl3[label="Empleado: 3 "] 
+nodoDeptoRRHH->nodoEmpl3
+nodoEmpl3name[label="Nombre: Marta Torres "] 
+nodoEmpl3->nodoEmpl3name
+}
