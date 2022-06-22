@@ -1,0 +1,54 @@
+# Tutorial Django
+# Crear proyecto
+django-admin.exe startproject ipc2 .
+
+# Iniciar server en localhost:8000
+python manage.py runserver
+#Probablemente pida migrar
+python manage.py migrate
+
+#Ruta archivos estaticos
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Siempre en la misma carpeta en donde creamos el proyecto creamos nuestro blog
+python manage.py startapp blog
+
+# Ahora en ipc2/settings.py, agregar a INSTALLED APPS[] 'blog.apps.BlogConfig',
+'blog.apps.BlogConfig',
+
+# Recargar la pagina para ver que todo este bien
+
+
+#Agregar la ruta a ipc2/urls.py. Tmbien hay que mportar el include
+from django.urls import path, include
+path('',include('blog.urls'))
+#Si ejecutamos, nos dira que no encuentra 'blog.urls'
+
+#Crear blog/urls.py
+from django.urls import path
+from . import views
+urlpatterns = [
+    path('', views.elemento1, name='elemento1'),
+]
+#Si ejecutamos, nos dira que no encuentra 'elemento1'
+
+#Crear Vistas de blog en blog/views.py
+from django.shortcuts import render
+
+def elemento1(request):
+    return render(request,'blog/elemento1.html',{})
+
+
+#Ahora funciona el server, pero no encuentra la pagina 
+#TemplateDoesNotExist at /blog/elemento1.html
+
+#Crear carpeta blog/templates/blog
+#Crear archivo blog/templates/blog/elemento1.html
+
+#Si ejecutamos, funciona, pero muestra la pagina en blanco 
+#porque elemento1.html esta vacio
+
+#Agregamos contenido html al elemento1
+#Listo!

@@ -15,6 +15,6 @@ nodoDeptoRRHH[label="RRHH"]
 nodoRaiz ->nodoDeptoRRHH
 nodoEmpl3[label="Empleado: 3 "] 
 nodoDeptoRRHH->nodoEmpl3
-nodoEmpl3name[label="Nombre: Marta Torres "] 
+nodoEmpl3name[label="Nombre: nombre random "] 
 nodoEmpl3->nodoEmpl3name
 }
