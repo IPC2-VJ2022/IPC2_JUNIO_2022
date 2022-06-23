@@ -1,0 +1,17 @@
+h1 a, h2 a {
+    color: #C25100;
+}
+
+.padre {
+    /* background: yellow; */
+    height: 100%;
+    /*IMPORTANTE*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hijo {
+    /* background: red; */
+    width: 750px;
+  }

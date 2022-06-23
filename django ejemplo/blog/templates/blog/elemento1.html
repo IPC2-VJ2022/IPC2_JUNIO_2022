@@ -1,0 +1,66 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div class="padre">
+            <div class="hijo">
+                <h1><a href="/">Lista de empleados</a></h1>
+                <!-- Recorremos cada departamento con un ciclo FOR -->
+                {% for departamento in variable.empresa.departamento %} 
+                    <!-- Recorremos cada empleado con otro FOR -->
+                    {% for empleado in departamento.empleado %} 
+                        <p>
+                            <h3>{{ empleado.id }} {{ empleado.nombre }}</h3>
+                        </p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Creamos el espacio para recibir el ID y el nuevo nombre -->
+        <form id="test" method="post">
+            {% csrf_token %}
+            <!-- creamos un texflied para id y otro para nombre -->
+            <input type="text" id="idtxt">
+            <input type="text" id="nametxt">
+        </form>
+        
+        <!-- El boton que va a ejecutar la peticion POST -->
+        <button onclick="enviar()">MODIFICAR</button>
+        
+        <!-- Creamos un espacio en donde vamos a ejcutar codigo Javascript -->
+        <script type="text/javascript">
+            // Creamos la funcion enviar que se llamara desde el boton
+            function enviar() {
+                // Guardamos el id y el nombre de los textfield
+                var x1 = document.getElementById("idtxt").value;
+                var x2 = document.getElementById("nametxt").value;
+                console.log(x1)
+                console.log(x2)
+
+                // Variables para la URL de la peticion y el contenido de la peticion
+                url_='http://localhost:9000/modificarEmpleado'
+                datos_={'id':x1,'nombre':x2}
+
+                // Hacemos la peticion
+                axios({
+                    method:'post',
+                    url:url_,
+                    data:datos_
+                }).then(
+                    // Imprimimos en consola el resultado de la peticion
+                    data=>console.log(data)
+                )
+                .catch(err=>console.log(err))
+            }
+        </script>
+        
+
+    </body>
+</html>

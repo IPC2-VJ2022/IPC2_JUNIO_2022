@@ -6,13 +6,13 @@
             <salario>4000.00</salario>
         </empleado>
         <empleado id="2">
-            <nombre>NUEVO IPC</nombre>
+            <nombre>Luis Hernandez</nombre>
             <salario>3000</salario>
         </empleado>
     </departamento>
     <departamento departamento="RRHH">
         <empleado id="3">
-            <nombre>ABCDE</nombre>
+            <nombre>Nuevo nombre</nombre>
             <salario>5000</salario>
         </empleado>
     </departamento>

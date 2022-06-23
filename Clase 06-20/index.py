@@ -6,8 +6,12 @@ import json
 import re
 import os
 
+#IMPORTAR CORS PARA PODER HACER PETICIONES POST DESDE DJANGO
+from flask_cors import CORS
+
 #App va a ser nuestra varianble para crear las rutas POST GET
 app=Flask(__name__)
+CORS(app)
 
 #definimos vairables iniciales
 # arbol=None
@@ -189,6 +193,7 @@ def Graficar1(raiz_):
 def modificarEmp():
     #leer los datos del json
     jsonres=request.get_json()
+    print(jsonres)
 
     #Guardar en variables los campos del JSON
     id_=int(jsonres["id"])
